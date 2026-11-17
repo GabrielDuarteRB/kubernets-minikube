@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kubernets-minikube-config
+data:
+  APP_ENV: "testing"
+  APP_NAME: "MINHA API TESTE"

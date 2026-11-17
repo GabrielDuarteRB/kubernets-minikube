@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gerador-carga
+spec:
+  restartPolicy: Never
+  containers:
+    - name: gerador
+      image: busybox:1.36
+      resources:
+        requests:
+          cpu: "50m"
+          memory: "32Mi"
+        limits:
+          cpu: "200m"
+          memory: "64Mi"
+      command: ["/bin/sh", "-c"]
+      args:
+        - |
+          for i in 1 2 3 4 5 6 7 8; do
+            (
+              fim=$(($(date +%s) + 120))
+              while [ "$(date +%s)" -lt "$fim" ]; do
+                wget -q -O /dev/null -T 2 \
+                  http://kubernets-minikube-service/health
+              done
+            ) &
+          done
+          wait

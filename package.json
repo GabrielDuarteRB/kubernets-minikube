@@ -1,0 +1,13 @@
+{
+  "name": "hello-world-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Simple Express API for a Minikube assignment",
+  "main": "app/server.js",
+  "scripts": {
+    "start": "node app/server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

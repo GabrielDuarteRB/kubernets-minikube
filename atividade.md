@@ -1,0 +1,16 @@
+- [x] Criar o cluster com pelo menos 3 nodes (minikube start --nodes 3).
+- [x] Habilitar os addons ingress e metrics-server.
+- [x] Criar a imagem da API com Dockerfile e publicar no Docker Hub.
+- [x] Criar os namespaces dev e hom.
+- Criar em cada namespace:
+  - [x] um Deployment com RollingUpdate configurado (dev com 1 réplica e hom com 2);
+  - [x] requests e limits de CPU e memória nos containers;
+  - [x] livenessProbe e readinessProbe;
+  - [x] um ConfigMap com variáveis da aplicação (ex.: APP_ENV, APP_NAME) e um Secret;
+  - [x] um Service do tipo ClusterIP;
+  - [x] um Ingress com host próprio (dev.local e hom.local);
+  - [x] um ResourceQuota limitando a quantidade de pods, CPU e memória;
+  - [x] um HorizontalPodAutoscaler com alvo de 60% de CPU.
+  - [x] Colocar labels nos nodes e usar nodeAffinity para os pods de dev e de hom rodarem em nodes diferentes.
+  - [x] Gerar carga na API e mostrar o HPA escalando os pods.
+  - [x] Apagar um pod e mostrar que o Kubernetes recria ele sozinho (self healing).
